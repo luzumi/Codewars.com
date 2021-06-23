@@ -1,6 +1,6 @@
 package KataTests;
 
-import Kata.DuplicateEncoder;
+import Kata.*;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,5 +1,6 @@
 package KataTests;
 
+import Kata.TwoSum;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -16,7 +17,7 @@ class TwoSumTest {
     private void doTest(int[] numbers, int[] expected)
     {
         int target = numbers[expected[0]] + numbers[expected[1]];
-        int[] actual = Kata.TwoSum.twoSum(numbers, target);
+        int[] actual = TwoSum.twoSum(numbers, target);
         if ( null == actual )
         {
             System.out.format("Received a null\n");
