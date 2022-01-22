@@ -64,27 +64,21 @@ public class BowlingCalculator {
             frameList[i] = new Frame(allFrames[i]);
             frameList[i].id = i;
         }
-        System.out.println(frames);
     }
 
     private static int calculate() {
         int sum = 0;
-        int print;
         for (int i = 0; i < frameList.length - 1; i++) {
             Frame f = frameList[i];
-            print = calculateFrame(f, i);
-            sum += print;
-            System.out.println(print + " " + sum);
+            sum += calculateFrame(f);
         }
-        print = calculateLastFrame();
-        sum += print;
-        System.out.println(print + " " + sum);System.out.println(print + " " + sum);
+        sum += calculateLastFrame();
         return sum;
     }
 
-    private static int calculateFrame(Frame thisFrame, int roll) {
-        if (thisFrame.strike) return calculateStrike(thisFrame, roll);
-        if (thisFrame.spare) return calculateSpare(thisFrame, roll);
+    private static int calculateFrame(Frame thisFrame) {
+        if (thisFrame.strike) return calculateStrike(thisFrame);
+        if (thisFrame.spare) return calculateSpare(thisFrame);
         return thisFrame.points.charAt(0) - 48 + thisFrame.points.charAt(1) - 48;
     }
 
@@ -105,7 +99,7 @@ public class BowlingCalculator {
     }
 
 
-    private static int calculateStrike(Frame f, int roll) {
+    private static int calculateStrike(Frame f) {
         Frame nextFrame = frameList[f.id + 1];
         Frame secondNextFrame;
         if(f.id < 8) secondNextFrame = frameList[f.id + 2];
@@ -118,7 +112,7 @@ public class BowlingCalculator {
         else return 10 + nextFrame.points.charAt(0) - 48 + nextFrame.points.charAt(1) - 48;
     }
 
-    private static int calculateSpare(Frame f, int roll) {
+    private static int calculateSpare(Frame f) {
         Frame nextFrame = frameList[f.id + 1];
         int value;
         if(nextFrame.points.charAt(0) == 'X') value = 10;
